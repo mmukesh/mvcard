@@ -1,0 +1,56 @@
+
+{% extends 'mvcard/index.html' %}
+{% load static %}
+{% block content %}
+
+<article class="portfolio active" data-page="portfolio">
+
+    <header>
+      <h2 class="h2 article-title">Portfolio</h2>
+    </header>
+
+    <section class="projects">
+
+      <ul class="filter-list">
+
+        <li class="filter-item">
+          <button class="active" data-filter-btn>All</button>
+        </li>
+        {% for i in cat %}
+        <li class="filter-item">
+          <button data-filter-btn>{{i.name}}</button>
+        </li>
+        {% endfor%}
+
+        
+      </ul>
+      
+      <ul class="project-list">
+        {% for i in portfolio %}
+        <li class="project-item" >
+          <a href="#">
+
+            <figure class="project-img">
+              <div class="project-item-icon-box">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+
+              <img src="{{ i.picture.url }}" alt="{{i.title}}" loading="lazy">
+            </figure>
+
+            <h3 class="project-title">{{i.title}}</h3>
+
+            <p class="project-category">{{i.category}}</p>
+
+          </a>
+        </li>
+        {% endfor %}
+        
+
+
+      </ul>
+
+    </section>
+
+  </article>
+{% endblock %}
